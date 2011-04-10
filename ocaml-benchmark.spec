@@ -4,7 +4,7 @@ Name:           ocaml-%{modname}
 Version:        0.9
 Release:        1
 Summary:        OCaml module for benchmarking code
-Group:          Development/Libraries
+Group:          Development/Other
 License:        LGPLv2 with exceptions
 URL:            https://forge.ocamlcore.org/projects/ocaml-benchmark/
 Source0:        https://forge.ocamlcore.org/frs/download.php/533/%{modname}-%{version}.tar.gz
@@ -16,7 +16,6 @@ OCaml Benchmark is a small module to benchmark running times of code.
 
 %package        devel
 Summary:        Development files for %{name}
-Group:          Development/Libraries
 Requires:       %{name} = %{EVRD}
 
 %description    devel
