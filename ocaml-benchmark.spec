@@ -45,3 +45,13 @@ make install DESTDIR=%{buildroot}%{_libdir}/ocaml
 %{_libdir}/ocaml/%{modname}/*.cmxa
 %{_libdir}/ocaml/%{modname}/*.mli
 
+
+
+%changelog
+* Sun Apr 10 2011 Per Øyvind Karlsen <peroyvind@mandriva.org> 0.9-1
++ Revision: 652421
+- imported package ocaml-benchmark
+
+
+* Sun Apr 10 2011 Per Øyvind Karlsen <peroyvind@mandriva.org> 0.9-1
+- initial package
