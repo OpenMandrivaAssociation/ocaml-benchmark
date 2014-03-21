@@ -1,26 +1,46 @@
-%define	modname	benchmark
+%define _enable_debug_packages %{nil}
+%define debug_package %{nil}
 
-Name:           ocaml-%{modname}
-Version:        0.9
-Release:        1
-Summary:        OCaml module for benchmarking code
-Group:          Development/Other
-License:        LGPLv2 with exceptions
-URL:            https://forge.ocamlcore.org/projects/ocaml-benchmark/
-Source0:        https://forge.ocamlcore.org/frs/download.php/533/%{modname}-%{version}.tar.gz
-BuildRequires:  ocaml
-BuildRequires:  ocaml-findlib-devel
+%define modname benchmark
+
+Summary:	OCaml module for benchmarking code
+Name:		ocaml-%{modname}
+Version:	0.9
+Release:	2
+License:	LGPLv2+ with exceptions
+Group:		Development/Other
+Url:		https://forge.ocamlcore.org/projects/ocaml-benchmark/
+Source0:	https://forge.ocamlcore.org/frs/download.php/533/%{modname}-%{version}.tar.gz
+BuildRequires:	ocaml
+BuildRequires:	ocaml-findlib-devel
 
 %description
 OCaml Benchmark is a small module to benchmark running times of code.
 
-%package        devel
-Summary:        Development files for %{name}
-Requires:       %{name} = %{EVRD}
+%files
+%doc LICENSE
+%{_libdir}/ocaml/%{modname}
+%exclude %{_libdir}/ocaml/%{modname}/*.a
+%exclude %{_libdir}/ocaml/%{modname}/*.cmxa
+%exclude %{_libdir}/ocaml/%{modname}/*.mli
 
-%description    devel
+#----------------------------------------------------------------------------
+
+%package devel
+Summary:	Development files for %{name}
+Requires:	%{name} = %{EVRD}
+
+%description devel
 The %{name}-devel package contains libraries and signature files for
 developing applications that use %{name}.
+
+%files devel
+%doc LICENSE README
+%{_libdir}/ocaml/%{modname}/*.a
+%{_libdir}/ocaml/%{modname}/*.cmxa
+%{_libdir}/ocaml/%{modname}/*.mli
+
+#----------------------------------------------------------------------------
 
 %prep
 %setup -q -n %{modname}-%{version}
@@ -32,26 +52,3 @@ make all opt
 mkdir -p %{buildroot}%{_libdir}/ocaml
 make install DESTDIR=%{buildroot}%{_libdir}/ocaml
 
-%files
-%doc LICENSE
-%{_libdir}/ocaml/%{modname}
-%exclude %{_libdir}/ocaml/%{modname}/*.a
-%exclude %{_libdir}/ocaml/%{modname}/*.cmxa
-%exclude %{_libdir}/ocaml/%{modname}/*.mli
-
-%files devel
-%doc LICENSE README
-%{_libdir}/ocaml/%{modname}/*.a
-%{_libdir}/ocaml/%{modname}/*.cmxa
-%{_libdir}/ocaml/%{modname}/*.mli
-
-
-
-%changelog
-* Sun Apr 10 2011 Per Øyvind Karlsen <peroyvind@mandriva.org> 0.9-1
-+ Revision: 652421
-- imported package ocaml-benchmark
-
-
-* Sun Apr 10 2011 Per Øyvind Karlsen <peroyvind@mandriva.org> 0.9-1
-- initial package
