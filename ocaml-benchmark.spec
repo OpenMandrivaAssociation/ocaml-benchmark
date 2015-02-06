@@ -6,7 +6,7 @@
 Summary:	OCaml module for benchmarking code
 Name:		ocaml-%{modname}
 Version:	0.9
-Release:	2
+Release:	3
 License:	LGPLv2+ with exceptions
 Group:		Development/Other
 Url:		https://forge.ocamlcore.org/projects/ocaml-benchmark/
